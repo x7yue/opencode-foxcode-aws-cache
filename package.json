@@ -1,6 +1,6 @@
 {
   "name": "opencode-foxcode-aws-cache",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "OpenCode plugin that enables prompt caching for Foxcode AWS channel by injecting metadata.user_id",
   "type": "module",
   "main": "./dist/index.js",
@@ -12,14 +12,25 @@
       "types": "./dist/index.d.ts"
     }
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "bun build src/index.ts --outdir dist --target node && bun x tsc --emitDeclarationOnly",
     "prepublishOnly": "bun run build",
     "release": "bun run build && changeset publish --access public",
     "changeset": "changeset"
   },
-  "keywords": ["opencode", "foxcode", "aws", "anthropic", "claude", "cache", "prompt-caching", "plugin"],
+  "keywords": [
+    "opencode",
+    "foxcode",
+    "aws",
+    "anthropic",
+    "claude",
+    "cache",
+    "prompt-caching",
+    "plugin"
+  ],
   "author": "x7yue",
   "license": "MIT",
   "publishConfig": {
