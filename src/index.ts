@@ -1,4 +1,7 @@
 import type { Plugin } from "@opencode-ai/plugin";
+import { initLogger, createLogger } from "./logger";
+
+const log = createLogger("fetch");
 
 let currentSessionId = "";
 let projectId = "";
@@ -21,14 +24,17 @@ function parseBody(body: BodyInit | null | undefined): string | null {
   return null;
 }
 
-export const OpenCodeFoxcodeAwsCache: Plugin = async ({ project }) => {
+export const OpenCodeFoxcodeAwsCache: Plugin = async ({ client, project }) => {
+  initLogger(client);
   projectId = project?.id || "";
+  log.info("Plugin initialized", { projectId });
 
   return {
     event: async ({ event }) => {
       if (event.type === "session.created" || event.type === "session.updated") {
         const props = event.properties as { info?: { id?: string } };
         currentSessionId = props?.info?.id || "";
+        log.debug("Session updated", { sessionId: currentSessionId });
       }
     },
 
@@ -51,6 +57,7 @@ export const OpenCodeFoxcodeAwsCache: Plugin = async ({ project }) => {
           try {
             payload = JSON.parse(rawBody);
           } catch {
+            log.warn("Failed to parse request body as JSON");
             return fetch(url, init);
           }
 
@@ -61,6 +68,7 @@ export const OpenCodeFoxcodeAwsCache: Plugin = async ({ project }) => {
             const meta = payload.metadata as Record<string, unknown>;
             if (meta.user_id == null) {
               meta.user_id = buildUserId();
+              log.info("Injected user_id", { user_id: meta.user_id });
             }
           }
 
