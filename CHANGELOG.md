@@ -1,5 +1,11 @@
 # 更新日志
 
+## 1.0.2
+
+### Patch Changes
+
+- [#4](https://github.com/x7yue/opencode-foxcode-aws-cache/pull/4) [`6a237c8`](https://github.com/x7yue/opencode-foxcode-aws-cache/commit/6a237c8fc090c7d79655f337ba898321da52c4d8) Thanks [@x7yue](https://github.com/x7yue)! - Add logging support via OpenCode SDK
+
 ## 1.0.1
 
 ### Patch Changes
