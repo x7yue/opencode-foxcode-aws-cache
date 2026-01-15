@@ -1,6 +1,6 @@
 {
   "name": "opencode-foxcode-aws-cache",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "OpenCode plugin that enables prompt caching for Foxcode AWS channel by injecting metadata.user_id",
   "type": "module",
   "main": "./dist/index.js",
