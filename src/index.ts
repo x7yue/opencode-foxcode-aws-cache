@@ -40,7 +40,7 @@ export const OpenCodeFoxcodeAwsCache: Plugin = async ({ client, project }) => {
 
     auth: {
       provider: "foxcode-aws",
-      methods: [],
+      methods: [{ type: "api", label: "key" }],
       loader: async () => ({
         fetch: async (url: string | URL | Request, init?: RequestInit) => {
           const headers = new Headers(init?.headers);
