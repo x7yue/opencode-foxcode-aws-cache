@@ -54,7 +54,8 @@ npm install -g opencode-foxcode-aws-cache
     "foxcode-aws": {
       "npm": "@ai-sdk/anthropic",
       "options": {
-        "baseURL": "https://code.newcli.com/claude/droid/v1"
+        "baseURL": "https://code.newcli.com/claude/droid/v1",
+        "litellmProxy": true
       },
       "models": {
         "claude-opus-4-5": {
@@ -73,6 +74,20 @@ npm install -g opencode-foxcode-aws-cache
   }
 }
 ```
+
+> 💡 **关于 `litellmProxy`**：当使用 LiteLLM 代理（如 Foxcode）时，必须设置 `litellmProxy: true`。这可以解决 OpenCode 在上下文压缩时 API 请求格式不兼容的问题。
+
+### 3. 配置 API Key
+
+> ⚠️ **重要**：必须使用 `/connect` 命令创建 `auth.json` 配置 API Key，foxcode-aws 才能生效。
+
+在 OpenCode 中运行：
+
+```
+/connect foxcode-aws
+```
+
+按照提示输入你的 Foxcode API Key，这将自动创建 `auth.json` 配置文件。
 
 
 ---
